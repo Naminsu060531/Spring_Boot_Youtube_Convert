@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: spring_youtube_project
+
+server:
+  port: 6531
+
+---
+spring:
+  config:
+    activate:
+      on-profile: jpa.h2
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    hikari:
+      connection-test-query: SELECT 1
+      minimum-idle: 10
+      maximum-pool-size: 50
+  jpa:
+    defer-datasource-initialization: true
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
